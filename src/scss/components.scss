@@ -1,0 +1,31 @@
+@import "./variables";
+
+//btn
+.btn {
+	display: inline-block;
+	@include flexCenter;
+	max-width: rem(270);
+	min-height: rem(44);
+	width: 100%;
+	margin: 0 auto;
+	font-size: rem(13);
+	line-height: rem(16);
+	letter-spacing: 1.4px;
+	background: linear-gradient(135deg, #a2a7f0 0%, #696edd 100%);
+	border-radius: rem(6);
+	text-transform: uppercase;
+	color: $white;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: transparent;
+		border: 1px solid #6d72de;
+		color: #6d72de;
+	}
+}
+
+@include xl {
+	.btn {
+		max-width: rem(288);
+	}
+}

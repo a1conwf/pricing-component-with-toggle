@@ -1,0 +1,104 @@
+@import "../../scss/mixins";
+@import "../../scss/layout";
+@import "../../scss/variables";
+
+//pricing
+.pricing {
+	padding: 64px 0 71px;
+	text-align: center;
+
+	//pricing header
+	&__header {
+		margin-bottom: 80px;
+
+		//title
+		&-title {
+			margin-bottom: 40px;
+		}
+
+		//Billing
+		.billing {
+			@include flexCenter;
+
+			//Switch
+			.switch {
+				position: relative;
+				display: inline-block;
+				min-width: 56px;
+				height: 32px;
+				margin: 0 24px;
+
+				//Input
+				&__input {
+					opacity: 0;
+					width: 0;
+					height: 0;
+				}
+
+				//Slider
+				&__slider {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: $blueGradient;
+					transition: 0.3s;
+					border-radius: 16px;
+					cursor: pointer;
+
+					//Before
+					&::before {
+						position: absolute;
+						content: "";
+						height: 24px;
+						width: 24px;
+						right: 4px;
+						bottom: 4px;
+						background-color: white;
+						transition: 0.3s;
+						border-radius: 50%;
+					}
+				}
+			}
+
+			.switch__input:checked + .switch__slider::before {
+				transform: translateX(-20px);
+			}
+		}
+	}
+
+	//pricing content
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+}
+
+@include md {
+	//pricing
+	.pricing {
+		//pricing header
+		&__header {
+			margin-bottom: 64px;
+		}
+
+		//pricing content
+		&__content {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+@include xl {
+	//pricing
+	.pricing {
+		//pricing content
+		&__content {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0;
+		}
+	}
+}

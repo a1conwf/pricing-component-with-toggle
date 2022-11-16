@@ -1,0 +1,135 @@
+@import "../../../scss/functions";
+@import "../../../scss/mixins";
+@import "../../../scss/components";
+
+//card
+.card {
+	height: fit-content;
+	padding: 31px 29px;
+	background-color: $white;
+	box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
+	border-radius: 10px;
+
+	//card plan
+	&__plan {
+		font-size: rem(18);
+		margin-bottom: 24px;
+	}
+
+	//card price
+	&__price {
+		@include flexCenter;
+		gap: 8px;
+		font-size: rem(50);
+		line-height: rem(51);
+		letter-spacing: -2.16px;
+		color: $darkGrayishBlue;
+		margin-bottom: 32px;
+
+		//dollar sign
+		&::before {
+			content: "\0024";
+			font-size: rem(40);
+			line-height: rem(49);
+			letter-spacing: -1.2px;
+		}
+	}
+
+	//features list
+	&__features {
+		max-width: 270px;
+		margin: 0 auto 32px auto;
+
+		//list item
+		&-item {
+			position: relative;
+			padding: 12px 0;
+
+			//separator
+			&::before,
+			&::after {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 1px;
+				background-color: $grayishBlue;
+				opacity: 0.25;
+			}
+
+			//separator before
+			&::before {
+				content: "";
+				top: 0;
+			}
+
+			//separator after
+			&:last-child:after {
+				content: "";
+				bottom: 0;
+			}
+		}
+	}
+
+	//middle card
+	&.card-2 {
+		background: $blueGradient;
+		color: $white;
+
+		.card__price {
+			color: $white;
+		}
+
+		.card__features-item::before,
+		.card__features-item::after {
+			background-color: $white;
+		}
+
+		.btn {
+			background: none;
+			background-color: $white;
+			color: #6d72de;
+
+			&:hover {
+				background: transparent;
+				border: 1px solid $white;
+				color: $white;
+			}
+		}
+	}
+}
+
+@include md {
+	.card:last-child {
+		width: 50%;
+		grid-column: span 2;
+		justify-self: center;
+	}
+}
+
+@include xl {
+	//card
+	.card {
+		transform: translate(0, 25px);
+		border-radius: 10px 0 0 10px;
+
+		//2nd card
+		&.card-2 {
+			padding: 55px 31px;
+			transform: translate(0);
+			border-radius: 10px;
+		}
+
+		//last card
+		&:last-child {
+			width: 100%;
+			grid-column: auto;
+			border-radius: 0 10px 10px 0;
+		}
+
+		//features list
+		&__features {
+			max-width: 100%;
+			margin: 0 0 32px;
+		}
+	}
+}
